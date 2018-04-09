@@ -1,12 +1,20 @@
 
 f = open('a01_input.txt')
 for line in f:
-    line.strip()
+    line = line.strip()
     if line:
         directions = line.split(',')
 f.close()
 
 directions = [d.strip() for d in directions]
+
+# Approach:
+#  * Location stores our North/South distance and East/West distance from origin.
+#  * Track our orientation by a list of headings, which we can rotate
+#    through clockwise by +1 to the index (Right turns),
+#    and counterclockwise by -1 (Left turns).
+#  * We add or subtract distances travelled by our heading, and the
+#    headings list gives us that multiplier to determine + or -.
 
 location = [0, 0]  # first is North/South, second is East/West
 headings = [('N', 1),
